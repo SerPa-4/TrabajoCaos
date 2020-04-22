@@ -3,47 +3,62 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+Pongo todos los parametros como variables y no constantes, ya se cambiaran a #define segun se vea necesario
+*/
+#define N1 100
+#define N2 100
 
-double fx1(double x1){
-    return sin(x1);
+//N1 y N2 se pueden definir mediante defines
+double fx1(double x1, double x2, double defect_reward, double coop_reward, double defect_punish, double prob){
+    
+    double b = defect_reward;
+    double r = coop_reward;
+    double e = defect_punish;  
+    double p = prob;
+
+    double logist_eq = x1*(1-x1);
+    double par_first_half = (N1 - 1)*(x1 * (1 - b + r) -r);
+    double par_second_half= N2*p*(x2 * (1 - b + e) - e);
+
+    return logist_eq * (par_first_half + par_second_half);
 }
 
-double runge_kutta_x1(double x1, double time_step){
+double fx2(double x1, double x2, double defect_reward, double coop_reward, double defect_punish, double prob){
+    double b = defect_reward;
+    double r = coop_reward;
+    double e = defect_punish;
+    double p = prob;  
+
+
+    double logist_eq = x2*(1-x2);
+    double par_first_half = (N2 - 1)*(x2 * (1 - b + r) -r);
+    double par_second_half= N1*p*(x1 * (1 - b + e) - e);
+
+    return logist_eq * (par_first_half + par_second_half);
+}
+
+double runge_kutta_x1(double x1, double x2, double defect_reward, double coop_reward, double defect_punish, double prob, double time_step){
     double t = time_step;
 
-    double K1 = fx1(x1) * t;
-    double K2 = fx1(x1 + 0.5*K1) * t;
-    double K3 = fx1(x1 + 0.5*K2) * t;
-    double K4 = fx1(x1 + K3) * t;
+    double K1 = fx1(x1, x2, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K2 = fx1(x1 + 0.5*K1, x2, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K3 = fx1(x1 + 0.5*K2, x2, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K4 = fx1(x1 + K3, x2, defect_reward, coop_reward, defect_punish, prob) * t;
 
     return x1 + 1.0/6 * (K1 + 2*K2 + 2*K3 + K4);
 
 }
 
+double runge_kutta_x2(double x1, double x2, double defect_reward, double coop_reward, double defect_punish, double prob, double time_step){
+    double t = time_step;
 
+    double K1 = fx2(x1, x2, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K2 = fx2(x1, x2 + 0.5*K1, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K3 = fx2(x1, x2 + 0.5*K2, defect_reward, coop_reward, defect_punish, prob) * t;
+    double K4 = fx2(x1, x2 + K3, defect_reward, coop_reward, defect_punish, prob) * t;
 
-int main(){
+    return x2 + 1.0/6 * (K1 + 2*K2 + 2*K3 + K4);
 
-    FILE *fp;
-    fp = fopen("file.txt", "w+");
-
-    double values[100];
-
-    srand(time(NULL));
-
-    double time_step = 0.01;
-    for(int j = 0; j < 100; j++){
-        double x1 = 6.2*rand()/(double)(RAND_MAX);
-        printf("%lf \n", x1);
-        for(int i = 0; i < 10000; i++){
-            x1 = runge_kutta_x1(x1, time_step);
-            //printf("%lf \t %lf \n" , x1, time_step*i);
-            //fprintf(fp,"%lf \t %lf \n", x1, time_step*i);
-        }
-        values[j] = x1;
-    }
-    printf("RESULTS:\n");
-    for (int i= 0; i<100; i++){
-        printf("%lf\n", values[i]);
-    }
 }
+
