@@ -11,7 +11,7 @@ Pongo todos los parametros como variables y no constantes, ya se cambiaran a #de
 #define N2 100
 
 double defect_reward=1.12;
-double coop_reward=1;
+double coop_reward=0;
 double defect_punish=-0.4;
 double prob=0.3;
 double time_step = 0.001;
@@ -26,7 +26,9 @@ void hundred_arrows();
 int main(){
     hundred_arrows();
 
+/*
 
+Esto es innecesario, era para comprobar
     FILE *fp;
     fp = fopen("XD.txt", "w");
     double j = 0;
@@ -36,6 +38,8 @@ int main(){
         j+=1;
     }
     fclose(fp);
+    
+   */
 }
 
 
