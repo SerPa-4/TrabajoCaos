@@ -2,7 +2,7 @@ reset
 clear
 
 #TITULO DEL GRAFICO
-set title '{/:Bold Retrato de fase}' font ",18"
+set title '{/:Bold Retrato de fase b=1.120}' font ",18"
 
 #AJUSTE EJE X
 set xlabel "{/:Bold x1}"
