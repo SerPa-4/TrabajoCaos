@@ -18,8 +18,10 @@ set yrange [:]
 #set key top left
 set key Left
 #set key at 60,8300
+set arrow from 1,0 to 0,1
 
 
 #PLOT DE LOS DATOS
 
-plot "phase_portrait.txt" u 1:2:3:4 title "" w vectors arrowstyle 1 
+plot "phase_portrait.txt" u 1:2:3:4 title "" w vectors arrowstyle 1 ,\
+
