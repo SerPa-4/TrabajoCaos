@@ -24,9 +24,7 @@ double runge_kutta_x2(double x1, double x2, double defect_reward, double coop_re
 void hundred_arrows();
 
 double modulo(double x, double y){
-    double m;
-    m=x*x+y*y;
-    return pow(m,0.5);
+    return sqrt(x*x+y*y);
 }
 
 int main(){
