@@ -29,7 +29,7 @@ struct persona{
 }; typedef struct persona Persona;
 
 
-void copy_chain(Persona *x, Persona *y, int length){    //x se copia en y
+void copy_chain(Persona *x, Persona *y, int length){    //copia contenidos una struct en otra
     for(int i=0;i<length;i++){
         y[i].group=x[i].group;
         y[i].cooperate=x[i].cooperate;
@@ -62,7 +62,7 @@ void PD(Persona *x,int pos_x,Persona *y,int pos_y){     //Dilema del Prisionero
     }
 }
 
-void SD(Persona *x,int pos_x,Persona *y,int pos_y){     //Halcón-Paloma
+void SD(Persona *x,int pos_x,Persona *y,int pos_y){     //HalcÃ³n-Paloma
     if(x[pos_x].cooperate==1 && y[pos_y].cooperate==1){
         x[pos_x].payoff+=SD_T;
         //y[pos_y].payoff+=SD_T;
