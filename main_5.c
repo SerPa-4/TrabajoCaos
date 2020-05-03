@@ -62,7 +62,7 @@ void PD(Persona *x,int pos_x,Persona *y,int pos_y){     //Dilema del Prisionero
     }
 }
 
-void SD(Persona *x,int pos_x,Persona *y,int pos_y){     //Halcón-Paloma
+void SD(Persona *x,int pos_x,Persona *y,int pos_y){     //HalcÃ³n-Paloma
     if(x[pos_x].cooperate==1 && y[pos_y].cooperate==1){
         x[pos_x].payoff+=SD_T;
         //y[pos_y].payoff+=SD_T;
@@ -118,10 +118,10 @@ void  PayoffChange( Persona *x,int length, int Matriz_de_adyacencia[][N1])
 // Para el maximo me da igual un int o double deperndera del problema
 double MaximoArray(int A[][N1],int lenght,int indice)
 {
-    double Max=(double)(A[indice][0]-A[indice][indice]);
-    for (int i=1;i<N1;i++){
+    double Max=-10000000.0;
+    for (int i=0;i<N1;i++){
         double aux=(A[indice][i]-A[indice][indice]);
-        if (aux>=Max) Max=aux;
+        if (aux>Max) Max=aux;
     }
     return Max;
 }
