@@ -10,4 +10,6 @@ a fondo las diferentes funciones, pero aun no he empezado
 
 Me doy cuenta ahora que faltaria una funcion que genere la poblacion inicial (declarnado si 
 cooperand o no)
+
+He corregido algunos errores del core.c de compilacion, en los ficheros por separado no estan corregidos
 	
