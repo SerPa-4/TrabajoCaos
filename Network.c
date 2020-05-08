@@ -30,6 +30,7 @@ struct persona{
 }; typedef struct persona Persona;
 
 
+//Genera el array de adyacencia
 //La poblacion de cada familia sera un array
 //Habra dos arrays, uno para cada familia
 void matrix_to_0(int matriz_adyacencia[N1+N2][N1+N2]); //funcion que enlaza la red compleja, realiza la tarea en tres regiones
