@@ -1,0 +1,678 @@
+
+\documentclass[11pt]{article}
+
+
+\usepackage[spanish]{babel} %Acentos 
+\renewcommand\spanishtablename{Tabla} %Cambiar Cuadro por Tabla
+\usepackage{array} %Cambiar grosor de lineas en las tablas c!{\vrule width 1pt} para columnas \ChangeRT{1pt} para filas en vez de \hline
+\newcommand\ChangeRT[1]{\noalign{\hrule height #1}}
+
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{subfig}
+\usepackage{amsthm}
+\usepackage{enumerate} %listas 
+\usepackage{multirow} %combinar filas tablas
+\usepackage{setspace} %Margenes y demas
+\usepackage[symbol]{footmisc} %footnotes
+\usepackage[table,xcdraw,dvipsnames]{xcolor} %color de tablas
+\usepackage{listings} %paquete para poner el codigo
+\usepackage{verbatim} %Comentarios de varias lineas \begin{comment}
+\usepackage{vmargin} %para margenes de la hoja y demas
+\usepackage{hyperref} %clicks en las referencias
+	\hypersetup{
+    	colorlinks,
+   		citecolor=blue,
+    	filecolor=blue,
+    	linkcolor=blue,
+    	urlcolor=blue
+	}
+
+\begin{document}
+\begin{titlepage}
+\centering
+%{\includegraphics[width=0.5\textwidth]{fisicateorica}\par}
+\vspace{1cm}
+{\bfseries\LARGE Universidad de Zaragoza \par}
+\vspace{1cm}
+{\scshape\Large Área de Física de la Materia Condensada\\
+-\\
+Facultad de Ciencias \par}
+\vspace{2cm}
+{\scshape\Huge Trabajo de Caos y Sistemas Dinámicos no lineales \par}
+\vspace{0.5cm}
+{\scshape\Large Trabajo número 11:\\
+Guerra de Mafias \par}
+\vspace{0.3cm}
+Tellería Serrano, Oriol\footnote[2]{777777@unizar.es}
+Pardina Quirós, Sergio\footnote[3]{761224@unizar.es}
+Muro Belloso, Alejandro\footnote[4]{759731@unizar.es} \par
+\vspace{1cm}
+%{\scshape\Large Grupo A1 \par}
+\vspace{1cm}
+%{\itshape\LARGE Técnicas Físicas II \par}
+%\vspace{3cm}
+{\Large 12 - 05 - 2020 \par}
+\end{titlepage}
+
+\spacing{1.2}
+%\setpapersize{A4}
+\begin{comment}
+\setmargins{2.5cm}
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}    % espacio entre el texto y el pie de página
+\end{comment}
+\newpage
+
+\section*{Análisis del sistema dinámico bidimensional}
+
+La descripción analítica exacta del comportamiento de los agentes viene dada, en el límite de una población bien mezclada, por la \textit{Ecuación Replicador} bidimensional dada por:
+\begin{equation}\label{ec1}
+\dot{x}_1=x_1(1-x_1)\lbrace(N_1-1)[x_1(1-b+r)-r]+N_2p[x_2(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation}
+\begin{equation}\label{ec2}
+\dot{x}_2=x_2(1-x_2)\lbrace(N_2-1)[x_2(1-b+r)-r]+N_1p[x_1(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation}
+Donde $X_\alpha$ representa la fracción de cooperadores en la población $\alpha$ (=1,2).\\
+En el límite termodinámico cunado $N_1,N_2\rightarrow\infty$ y usando que $\beta=N_1/N_2$ podemos escribir:
+\begin{equation}\label{ec3}
+\dot{x}_1=\mathcal{F}_1(x_1,x_2)
+\end{equation}
+\begin{equation}\label{ec4}
+\dot{x}_2=\mathcal{F}_2(x_1,x_2)
+\end{equation}
+Donde las funciones usadas vienen dadas por:
+\begin{equation}\label{ec5}
+\mathcal{F}_1(x_1,x_2)=x_1(1-x_1)\lbrace \beta[x_1(1-b+r)-r]+p[x_2(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation}
+\begin{equation}\label{ec6}
+\mathcal{F}_2(x_1,x_2)=x_2(1-x_2)\lbrace [x_2(1-b+r)-r]+\beta p[x_1(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation}\\
+
+
+
+
+\noindent Comenzamos el análisis obteniendo las nulclinas del sistema, aquellas curvas que corresponden a $\dot{x}_1=\dot{x}_2=0$:
+
+\subsection*{Igualando la \autoref{ec5} a 0 tenemos:}
+\begin{equation*}
+\dot{x}_1=0=\underline{x_1(1-x_1)}\lbrace \beta[x_1(1-b+r)-r]+p[x_2(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation*}
+Fijándonos en la parte subrayada obtenemos inmediatamente las soluciones:
+\begin{equation}\label{ec7}
+x_1=0
+\end{equation}
+\begin{equation}\label{ec8}
+x_1=1
+\end{equation}
+La última solución se obtiene eliminando la parte subrayada, no  negativa pues no consideramos $x_1=0,1$:
+\begin{equation*}
+\beta[x_1(1-b+r)-r]+p[x_2(1-b+\epsilon)-\epsilon]=0\Longleftrightarrow
+\end{equation*}
+\begin{equation}\label{ec9}
+\Longleftrightarrow x_2=\dfrac{-x_1\beta(b-1-r)-(\beta r+p\epsilon)}{p(b-1-\epsilon)}
+\end{equation}
+
+\newpage
+
+\subsection*{Igualando la \autoref{ec6} a 0 tenemos:}
+\begin{equation*}
+\dot{x}_2=0=\underline{x_2(1-x_2)}\lbrace [x_2(1-b+r)-r]+\beta p[x_1(1-b+\epsilon)-\epsilon]\rbrace
+\end{equation*}
+Fijándonos en la parte subrayada obtenemos inmediatamente las soluciones:
+\begin{equation}\label{ec10}
+x_2=0
+\end{equation}
+\begin{equation}\label{ec11}
+x_2=1
+\end{equation}
+La última solución se obtiene eliminando la parte subrayada, no  negativa pues no consideramos $x_2=0,1$:
+\begin{equation*}
+[x_2(1-b+r)-r]+\beta p[x_1(1-b+\epsilon)-\epsilon]=0\Longleftrightarrow
+\end{equation*}
+\begin{equation}\label{ec12}
+\Longleftrightarrow x_2=\dfrac{-x_1\beta p(b-1-\epsilon)-(r+\beta p\epsilon)}{(b-1-r)}
+\end{equation}\\
+
+Juntando todo obtenemos los punto fijos en el plano $x_1,x_2$:
+
+\subsubsection*{Con la \autoref{ec7} y la \autoref{ec10} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec13}
+x_1=0
+\end{equation}
+\begin{equation}\label{ec14}
+x_2=0
+\end{equation}
+
+\subsubsection*{Con la \autoref{ec7} y la \autoref{ec11} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec15}
+x_1=0
+\end{equation}
+\begin{equation}\label{ec16}
+x_2=1
+\end{equation}
+
+
+
+\subsubsection*{Con la \autoref{ec7} y la \autoref{ec12} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec17}
+x_1=0
+\end{equation}
+\begin{equation}\label{ec18}
+x_2=-\dfrac{r+\beta p\epsilon}{b-1-r}
+\end{equation}
+
+
+\subsubsection*{Con la \autoref{ec8} y la \autoref{ec10} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec19}
+x_1=1
+\end{equation}
+\begin{equation}\label{ec20}
+x_2=0
+\end{equation}
+
+\subsubsection*{Con la \autoref{ec8} y la \autoref{ec11} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec21}
+x_1=1
+\end{equation}
+\begin{equation}\label{ec22}
+x_2=1
+\end{equation}
+
+\subsubsection*{Con la \autoref{ec8} y la \autoref{ec12} obtenemos:}
+\vspace{-0.7cm}
+\begin{equation}\label{ec23}
+x_1=1
+\end{equation}
+\begin{equation}\label{ec24}
+x_2=-\dfrac{\beta p(b-1)+r}{b-1-r})=-\beta p-r\dfrac{\beta p+1}{b-1-r}
+\end{equation}
+
+
+\subsubsection*{Con la \autoref{ec9} y la \autoref{ec10} obtenemos:}
+\vspace{-0.5cm}
+\begin{equation}\label{ec25}
+x_1=-\dfrac{\beta r+p\epsilon}{\beta(b-1-r)}
+\end{equation}
+\begin{equation}\label{ec26}
+x_2=0
+\end{equation}
+
+\subsubsection*{Con la \autoref{ec9} y la \autoref{ec11} obtenemos:}
+\vspace{-0.5cm}
+\begin{equation}\label{ec27}
+x_1=-\dfrac{p(b-1)+\beta r}{\beta(b-1-r)}=-\dfrac{p}{\beta}-r\dfrac{p+\beta}{\beta(b-1-r)}
+\end{equation}
+\begin{equation}\label{ec28}
+x_2=1
+\end{equation}
+
+
+\subsubsection*{Con la \autoref{ec9} y la \autoref{ec12} obtenemos:}
+\vspace{-0.5cm}
+\begin{equation*}
+\dfrac{-x_1\beta(b-1-r)-(\beta r+p\epsilon)}{p(b-1-\epsilon)}=\dfrac{-x_1\beta p(b-1-\epsilon)-(r+\beta p\epsilon)}{(b-1-r)}\Longleftrightarrow
+\end{equation*}
+\begin{equation*}
+\Longleftrightarrow x_1\beta[(p(b-1-\epsilon))^2-(b-1-r)^2]=(\beta r+p\epsilon)(b-1-r)-p(r+\beta p\epsilon)(b-1-\epsilon)\Longleftrightarrow
+\end{equation*}
+\begin{equation}\label{ec29}
+\Longleftrightarrow x_1=\dfrac{(\beta r+p\epsilon)(b-1-r)-p(r+\beta p\epsilon)(b-1-\epsilon)}{\beta[(p(b-1-\epsilon))^2-(b-1-r)^2]}
+\end{equation}\\
+\begin{equation*}
+x_2=\dfrac{-\beta p(b-1-\epsilon)}{(b-1-r)}\left(\dfrac{(\beta r+p\epsilon)(b-1-r)-p(r+\beta p\epsilon)(b-1-\epsilon)}{\beta[(p(b-1-\epsilon))^2-(b-1-r)^2]}\right)-\dfrac{(r+\beta p\epsilon)}{(b-1-r)}=
+\end{equation*}
+\begin{equation*}
+-\dfrac{p(\beta r+p\epsilon)(b-1-\epsilon)}{[(p(b-1-\epsilon))^2-(b-1-r)^2]}+\dfrac{(p(b-1-\epsilon))^2(r+\beta p\epsilon)}{[(p(b-1-\epsilon))^2-(b-1-r)^2](b-1-r)}+
+\end{equation*}
+\begin{equation*}
+\dfrac{-(r+\beta p\epsilon)(p(b-1-\epsilon))^2+(r+\beta p\epsilon)(b-1-r)^2]}{[(p(b-1-\epsilon))^2-(b-1-r)^2](b-1-r)}
+\end{equation*}
+\begin{equation}\label{ec30}
+x_2=\dfrac{(r+\beta p\epsilon)(b-1-r)-p(\beta r+p\epsilon)(b-1-\epsilon)}{[(p(b-1-\epsilon))^2-(b-1-r)^2]}
+\end{equation}
+
+\newpage
+
+\noindent Puesto que solo nos interesan los puntos dentro del cuadrado unidad, $0\leq x_1,x_2\leq 1$ debemos descartar los puntos que se hallen fuera de él.
+
+Esto incluye los puntos dados por la \autoref{ec24}:\\
+El denominador muestra una asíntota en $b=1+r$ con lo que distinguimos dos casos:\\
+$1<b<1+r$: el denominador es negativo y el segundo término es positivo.
+\begin{equation*}
+x_2>x_2(b=1)=-\beta p+(\beta p+1)=1
+\end{equation*}
+$b>1+r$: el denominador es ahora positivo y el segundo término es negativo. Se tiene que en el límite:
+\begin{equation*}
+x_2(b\rightarrow\infty)=-\beta p<0
+\end{equation*}
+
+
+Y aquellos dados por la \autoref{ec27}:\\
+El denominador muestra una asíntota en $b=1+r$ con lo que distinguimos dos casos:\\
+$1<b<1+r$: el denominador es negativo y el segundo término es positivo.
+\begin{equation*}
+x_1>x_1(b=1)=-\dfrac{p}{\beta}+\left(\dfrac{p}{\beta}+1\right)=1
+\end{equation*}
+$b>1+r$: el denominador es ahora positivo y el segundo término es negativo. Se tiene que en el límite:
+\begin{equation*}
+x_1(b\rightarrow\infty)=-\dfrac{p}{\beta}<0
+\end{equation*}\\
+
+En conclusión quedan los siguientes puntos fijos:
+\begin{equation*}
+A=(0,1)
+\end{equation*}
+\begin{equation*}
+B=(1,0)
+\end{equation*}
+\begin{equation*}
+C=(1,1)
+\end{equation*}
+\begin{equation*}
+D=(0,0)
+\end{equation*}
+\begin{equation*}
+A'=\left(1,-\dfrac{\beta p(b-1)+r}{\beta(b-1-r)}\right)
+\end{equation*}
+\begin{equation*}
+B'=\left(-\dfrac{p(b-1)+\beta r}{\beta(b-1-r)},1\right)
+\end{equation*}
+\begin{equation*}
+E=\left(x_1,x_2\right)
+\end{equation*}
+\vspace{-1.2cm}
+Dados por la \autoref{ec29} y la \autoref{ec30} respectivamente.
+
+\newpage
+
+\noindent El caso de coincidencia de nulclinas se da cuando las rectas dadas por la \autoref{ec9} y la \autoref{ec12} son iguales, es decir tienen igual pendiente $m$ e igual ordenada en el origen $n$.
+\begin{equation*}
+m=-\dfrac{\beta(b-1-r)}{p(b-1-\epsilon)}=-\dfrac{\beta p(b-1-\epsilon)}{(b-1-r)}\Longleftrightarrow (b-1-r)^2=(p(b-1-\epsilon))^2 \Longleftrightarrow
+\end{equation*}
+\begin{equation*}
+\Longleftrightarrow (b-1-r)=p(b-1-\epsilon) \qquad \text{Con $b>1+r$}
+\end{equation*}
+\begin{equation*}
+b(1-p)=1-p+r-p\epsilon \Longleftrightarrow b=1+\dfrac{r-p\epsilon}{1-p}
+\end{equation*}
+\begin{equation*}
+b>1+r\qquad r>-p\epsilon
+\end{equation*}
+\begin{equation*}
+\dfrac{r-p\epsilon}{1-p}>r\Longleftrightarrow r>\epsilon
+\end{equation*}
+$r>-p\epsilon$ es más restrictiva.\\
+
+\begin{equation*}
+n=-\dfrac{(\beta r+p\epsilon)}{p(b-1-\epsilon)}=-\dfrac{(r+\beta p\epsilon)}{(b-1-r)}\Longleftrightarrow (\beta r+p\epsilon)=(r+\beta p\epsilon) \Longleftrightarrow 
+\end{equation*}
+\begin{equation*}
+\Longleftrightarrow \beta =1
+\end{equation*}
+
+\newpage
+
+Los resultados se obtienen según:
+\begin{equation*}
+\begin{pmatrix}
+\dfrac{\partial \mathcal{F}_1}{\partial x_1} & \dfrac{\partial \mathcal{F}_1}{\partial x_2}\\
+\dfrac{\partial \mathcal{F}_2}{\partial x_1} & \dfrac{\partial \mathcal{F}_2}{\partial x_2}
+\end{pmatrix}_{\textbf{x}=\textbf{x*}}=
+\end{equation*}
+
+\begin{equation*}
+\hspace{-3.2cm}
+\resizebox{1.35\hsize}{!}{
+$\left(
+\begin{array}{cc}
+ (b-1) x_1^* (3 x_1^*-2) \beta -r \left(3 {x_1^*}^2-4 x_1^*+1\right) \beta +p (2 x_1^*-1) (x_2^* (b-\epsilon -1)+\epsilon ) & p (x_1^*-1) x_1^* (b-\epsilon -1) \\
+ p (y-1) x_2^* \beta  (b-\epsilon -1) & 3 (b-1) {x_2^*}^2+2 (b (p x_1^* \beta -1)-p \beta  (\epsilon  x_1^*+x_1^*-\epsilon )+1) x_2^*+r \left(-3 {x_2^*}^2+4 x_2^*-1\right)+p \beta  (x_1^* (-b+\epsilon +1)-\epsilon ) \\
+\end{array}
+\right)$}
+\end{equation*}\\
+
+
+
+
+\section*{Caso simétrico $N_1=N_2(=N)$}
+En este caso particular $\beta=1$.\\
+Puesto que las poblaciones son idénticas, aunque distinguibles, el sistema posee simetría bajo el intercambio de poblaciones. Esto resulta en una simetría del diagrama de fases respecto al intercambio $x_1\longleftrightarrow x_2$.
+
+\subsection*{$A=(0,1)$}
+\begin{equation*}
+\left(
+\begin{array}{cc}
+ -b p+p-r & 0 \\
+ 0 & b+p \epsilon -1 \\
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+\tau= b (-p)+b+p \epsilon +p-r-1
+\end{equation*}
+\begin{equation}
+\Delta=-((b-1) p+r) (b+p \epsilon -1)
+\end{equation}
+\begin{equation*}
+(b-1)=\dfrac{(r+p^2\epsilon)\pm\sqrt{(r+p^2\epsilon)^2-4rp^2\epsilon}}{-2p}=\dfrac{(r+p^2\epsilon)\pm(r-p^2\epsilon)}{-2p}
+\end{equation*}\\
+
+\begin{equation}
+\begin{split}
+\tau<0&\Longleftrightarrow p=1 \\
+&\Longleftrightarrow b<\frac{p \epsilon +p-r-1}{p-1}=1+\dfrac{r-p\epsilon}{1-p}(>1)
+\end{split}
+\end{equation}
+\begin{equation}
+\Delta>0\Longleftrightarrow b<1-p\epsilon\qquad\text{Bifurcación}
+\end{equation}
+\begin{equation}
+\dfrac{r-p\epsilon}{1-p}<-p\epsilon\Longleftrightarrow  \cancel{r<p^2\epsilon<0}
+\end{equation}
+\begin{equation}
+\dfrac{r-p\epsilon}{1-p}>-p\epsilon\Longleftrightarrow  r>p^2\epsilon>0\qquad\text{Se cumple siempre}
+\end{equation}
+La traza tiene un límite superior más alto.
+
+
+\subsection*{$B=(1,0)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ b+p \epsilon -1 & 0 \\
+ 0 & -b p+p-r \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=b (-p)+b+p \epsilon +p-r-1
+\end{equation}
+\begin{equation}
+\Delta=-((b-1) p+r) (b+p \epsilon -1)
+\end{equation}
+Mismo caso que $A$ por la simetría de este caso particular.
+
+\subsection*{$C=(1,1)$}
+\begin{equation*}
+\left(
+\begin{array}{cc}
+ (b-1) (p+1) & 0 \\
+ 0 & (b-1) (p+1) \\
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+\tau=2 (b-1) (p+1)>0
+\end{equation*}
+\begin{equation*}
+\Delta=(b-1)^2 (p+1)^2>0
+\end{equation*}
+Punto inestable.
+
+\subsection*{$D=(0,0)$}
+\begin{equation*}
+\left(
+\begin{array}{cc}
+ -r-p \epsilon  & 0 \\
+ 0 & -r-p \epsilon  \\
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+\tau=-2 (p \epsilon +r)
+\end{equation*}
+\begin{equation*}
+\Delta=(p \epsilon +r)^2>0
+\end{equation*}
+$\tau<0\Longleftrightarrow r>-p\epsilon$ Punto fijo estable\\
+$\tau>0\Longleftrightarrow r<-p\epsilon$ Punto fijo inestable\\
+
+\subsection*{$A'=\left(1,-\dfrac{ p(b-1)+r}{(b-1-r)}\right)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ -\frac{(b-1) (p+1) (b (p-1)+r-p (\epsilon +1)+1)}{b-r-1} & 0 \\
+ \frac{(b-1) p (p+1) ((b-1) p+r) (b-\epsilon -1)}{(-b+r+1)^2} & \frac{(b-1) (p+1) ((b-1) p+r)}{b-r-1} \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=\frac{(b-1) (p+1) (b+p \epsilon -1)}{b-r-1}
+\end{equation}
+\begin{equation}
+\Delta=-\frac{(b-1)^2 (p+1)^2 ((b-1) p+r) (b (p-1)-p (\epsilon +1)+r+1)}{(-b+r+1)^2}
+\end{equation}\\
+
+\begin{equation}
+\begin{split}
+\tau<0 & \Longleftrightarrow \left(r<-p\epsilon \land r+1<b<1-p \epsilon \right)\\
+&\Longleftrightarrow \left(r>-p\epsilon \land 1-p \epsilon <b<r+1\right)
+\end{split}
+\end{equation}
+\begin{equation}
+\Delta>0\Longleftrightarrow b>\frac{p \epsilon +p-r-1}{p-1}=1+\dfrac{r-p\epsilon}{1-p}
+\end{equation}\\
+
+\begin{equation}
+\begin{split}
+\tau>0 & \Longleftrightarrow \left(r<-p\epsilon\land (1<b<r+1\lor b>1-p \epsilon )\right)\\
+&\Longleftrightarrow \left(r=-p\epsilon\land (1<b<1-p \epsilon \lor b>1-p \epsilon )\right)\\
+&\Longleftrightarrow \left(r>-p\epsilon\land (1<b<1-p \epsilon \lor b>r+1)\right)
+\end{split}
+\end{equation}
+\begin{equation}
+\Delta<0\Longleftrightarrow
+\end{equation}
+
+\subsection*{$B'=\left(-\dfrac{p(b-1)+ r}{(b-1-r)},1\right)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ \frac{(b-1) (p+1) ((b-1) p+r)}{b-r-1} & \frac{(b-1) p (p+1) ((b-1) p+r) (b-\epsilon -1)}{(-b+r+1)^2} \\
+ 0 & -\frac{(b-1) (p+1) (b (p-1)+r-p (\epsilon +1)+1)}{b-r-1} \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=\frac{(b-1) (p+1) (b+p \epsilon -1)}{b-r-1}
+\end{equation}
+\begin{equation}
+\Delta=-\frac{(b-1)^2 (p+1)^2 ((b-1) p+r) (b (p-1)-p (\epsilon +1)+r+1)}{(-b+r+1)^2}
+\end{equation}
+Mismo caso que $A`$ por la simetría de este caso particular.
+
+\subsection*{$E=\left(x_1,x_2\right)$}
+Dados por la \autoref{ec29} y la \autoref{ec30} respectivamente.
+\begin{equation}
+\left(
+\begin{array}{cc}
+ \frac{(b (2 p+3)-3 (r+1)-2 p (\epsilon +1)) \text{p$\epsilon $}^2+\left(\left(p^2+3 p+2\right) b^2-\left((4 \epsilon +2) p^2+(r+5 \epsilon +6) p+4\right) b-2 r^2+p (3 \epsilon  r+r+5 \epsilon +3)+p^2 \left(3 \epsilon ^2+4 \epsilon +1\right)+2\right) \text{p$\epsilon $}-p \epsilon  (\epsilon  p+p-b (p+1)+1)^2+r^2 (2 \epsilon  p+p-b (p+1)+1)+(b-1) r (b (p+1)-p (\epsilon +1)-1)}{(\epsilon  p+p-b (p+1)+r+1)^2} & \frac{p (\text{p$\epsilon $}+r) (b-\epsilon -1) (b (p+1)+\text{p$\epsilon $}-p (\epsilon +1)-1)}{(\epsilon  p+p-b (p+1)+r+1)^2} \\
+ \frac{p (\text{p$\epsilon $}+r) (b-\epsilon -1) (b (p+1)+\text{p$\epsilon $}-p (\epsilon +1)-1)}{(\epsilon  p+p-b (p+1)+r+1)^2} & \frac{(b (2 p+3)-3 (r+1)-2 p (\epsilon +1)) \text{p$\epsilon $}^2+\left(\left(p^2+3 p+2\right) b^2-\left((4 \epsilon +2) p^2+(r+5 \epsilon +6) p+4\right) b-2 r^2+p (3 \epsilon  r+r+5 \epsilon +3)+p^2 \left(3 \epsilon ^2+4 \epsilon +1\right)+2\right) \text{p$\epsilon $}-p \epsilon  (\epsilon  p+p-b (p+1)+1)^2+r^2 (2 \epsilon  p+p-b (p+1)+1)+(b-1) r (b (p+1)-p (\epsilon +1)-1)}{(\epsilon  p+p-b (p+1)+r+1)^2} \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=-\frac{2 \left(-\text{p$\epsilon $} \left(b^2 \left(p^2+3 p+2\right)-b \left(p^2 (4 \epsilon +2)+p (r+5 \epsilon +6)+4\right)+p^2 \left(3 \epsilon ^2+4 \epsilon +1\right)+p (3 r \epsilon +r+5 \epsilon +3)-2 r^2+2\right)+\text{p$\epsilon $}^2 (-b (2 p+3)+2 p (\epsilon +1)+3 (r+1))+r^2 (b p+b-2 p \epsilon -p-1)-(b-1) r (b (p+1)-p (\epsilon +1)-1)+p \epsilon  (-b (p+1)+p \epsilon +p+1)^2\right)}{(-b (p+1)+p \epsilon +p+r+1)^2}
+\end{equation}
+\begin{equation}
+\Delta=-\frac{2 \text{p$\epsilon $}^3 \left(b^2 \left(p^2+7 p+6\right)-b \left(p^2 (6 \epsilon +2)+p (5 r+13 \epsilon +14)+12\right)+p^2 \left(5 \epsilon ^2+6 \epsilon +1\right)+p (11 r \epsilon +5 r+13 \epsilon +7)-6 r^2+6\right)+2 \text{p$\epsilon $}^2 \left(2 b^3 (p+1)^2-b^2 (p+1) \left(4 p^2 \epsilon +p (3 r+11 \epsilon +6)-5 r+6\right)+b \left(2 p^3 \epsilon  (5 \epsilon +4)+3 p^2 \left(r (3 \epsilon +2)+5 \epsilon ^2+10 \epsilon +2\right)+p \left(-7 r^2-2 r (\epsilon +2)+22 \epsilon +12\right)-5 r^2-10 r+6\right)-2 p^3 \epsilon  \left(3 \epsilon ^2+5 \epsilon +2\right)-p^2 \left(r \left(8 \epsilon ^2+9 \epsilon +3\right)+15 \epsilon ^2+15 \epsilon +2\right)+p \left(7 r^2 (2 \epsilon +1)+2 r (\epsilon +1)-11 \epsilon -4\right)-2 r^3+5 r^2+5 r-2\right)-2 \text{p$\epsilon $} \left(p r^2 \left(3 b^2 (p+1)-b (p (11 \epsilon +6)+7 \epsilon +6)+p \left(10 \epsilon ^2+11 \epsilon +3\right)+7 \epsilon +3\right)+r \left(b^3 (p-2) (p+1)^2+b^2 \left(-3 p^3 (\epsilon +1)+4 p^2 \epsilon +p (7 \epsilon +9)+6\right)+b \left(3 p^3 (\epsilon +1)^2-4 p^2 \epsilon  (\epsilon +2)-p (14 \epsilon +9)-6\right)-p^3 (\epsilon +1)^3+4 p^2 \epsilon  (\epsilon +1)+p (7 \epsilon +3)+2\right)+2 r^3 (b p+b-2 p \epsilon -p-1)-p \epsilon  (-b (p+1)+p \epsilon +p+1)^2 (-b (p+2)+3 p \epsilon +p+2)\right)+r^2 \left(b^3 (-(p-1)) (p+1)^2+b^2 (p+1) \left(p^2 (5 \epsilon +3)-p \epsilon -3\right)-b \left(p^3 \left(8 \epsilon ^2+10 \epsilon +3\right)+p^2 \left(4 \epsilon ^2+8 \epsilon +3\right)-p (2 \epsilon +3)-3\right)+p^3 (\epsilon +1) (2 \epsilon +1)^2+(2 p \epsilon +p)^2-p (\epsilon +1)-1\right)+p^2 \epsilon ^2 (b (p+1)-p (\epsilon +1)-1)^3+3 \text{p$\epsilon $}^4 (b (p+3)-p (\epsilon +1)-3 (r+1))-r^3 (b (-p)-b+2 p \epsilon +p+1)^2+p r \epsilon  (-2 b+p \epsilon +2) (-b (p+1)+p \epsilon +p+1)^2}{(-b (p+1)+p \epsilon +p+r+1)^3}
+\end{equation}\\
+
+\begin{equation}
+\tau<0\Longleftrightarrow 
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section*{Caso general}
+
+\subsection*{$A=(0,1)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ -(b-1) p-r \beta  & 0 \\
+ 0 & 3 (b-1)-p \beta  \epsilon +2 (-b+p \beta  \epsilon +1) \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=b (-p)+b+\beta  p \epsilon +p-\beta  r-1
+\end{equation}
+\begin{equation}
+\Delta=(b+\beta  p \epsilon -1) (-((b-1) p+\beta  r))
+\end{equation}
+
+\subsection*{$B=(1,0)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ (b-1) \beta +p \epsilon  & 0 \\
+ 0 & (1-b) p \beta -r \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=\beta  (b (-p)+b+p-1)+p \epsilon -r
+\end{equation}
+\begin{equation}
+\Delta=((b-1) \beta +p \epsilon ) (-((b-1) \beta  p+r))
+\end{equation}
+
+
+\subsection*{$C=(1,1)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ (b-1) p+(b-1) \beta  & 0 \\
+ 0 & 3 (b-1)+(1-b) p \beta +2 (-p \beta +b (p \beta -1)+1) \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=(b-1) (\beta +1) (p+1)
+\end{equation}
+\begin{equation}
+\Delta=(b-1)^2 \left(\beta +\beta  p^2+\beta ^2 p+p\right)
+\end{equation}
+
+
+
+\subsection*{$D=(0,0)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ -r \beta -p \epsilon  & 0 \\
+ 0 & -r-p \beta  \epsilon  \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=-(\beta +1) (p \epsilon +r)
+\end{equation}
+\begin{equation}
+\Delta=\beta  p^2 \epsilon ^2+\left(\beta ^2+1\right) p r \epsilon +\beta  r^2
+\end{equation}
+
+\subsection*{$A'=\left(1,-\dfrac{\beta p(b-1)+r}{\beta(b-1-r)}\right)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ (b-1) \beta +p \left(\epsilon -\frac{(r+(b-1) p \beta ) (b-\epsilon -1)}{(b-r-1) \beta }\right) & 0 \\
+ \frac{p (r+(b-1) p \beta ) (-\beta  r+r+(b-1) (p+1) \beta ) (b-\epsilon -1)}{(-b+r+1)^2 \beta } & \frac{\left(\beta ^2-4 \beta +3\right) r^2+(b-1) \beta  \left(-\beta +p \left(\beta ^2-6 \beta +6\right)+2\right) r-(b-1)^2 p \beta ^2 (\beta +p (2 \beta -3)-2)}{(b-r-1) \beta ^2} \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\hspace{-4cm}
+\tau=\frac{-(b-1) \beta ^2 (p+1) (-b \beta +p (2 b (\beta -1)-2 \beta -\epsilon +2)+\beta )+(\beta -1) \beta  r (b (-\beta +(\beta -5) p-2)+\beta -p (\beta +\epsilon -5)+2)+\left(\beta ^2-4 \beta +3\right) r^2}{\beta ^2 (b-r-1)}
+\end{equation}
+\begin{equation}
+\Delta=\frac{\left((b-1)^2 \beta ^2 p (\beta +(2 \beta -3) p-2)-(b-1) \beta  r \left(-\beta +\left(\beta ^2-6 \beta +6\right) p+2\right)-\left(\beta ^2-4 \beta +3\right) r^2\right) \left((b-1) \beta  p^2 (b-\epsilon -1)-(b-1) \beta  p \epsilon +p r ((\beta -1) \epsilon +b-1)-(b-1) \beta ^2 (b-r-1)\right)}{\beta ^3 (-b+r+1)^2}
+\end{equation}
+
+\section*{$B'=\left(-\dfrac{p(b-1)+\beta r}{\beta(b-1-r)},1\right)$}
+\begin{equation}
+\left(
+\begin{array}{cc}
+ \frac{(b-1)^2 p^2+(b-1) ((b-3 r-1) \beta +4 \text{$\beta $r}) p+r^2 \beta ^2+\text{$\beta $r} (2 (b-1) \beta +3 \text{$\beta $r})+r \beta  (-b \beta +\beta -4 \text{$\beta $r})}{(b-r-1) \beta } & \frac{p ((b-1) p+\text{$\beta $r}) ((b-1) p+(b-r-1) \beta +\text{$\beta $r}) (b-\epsilon -1)}{(-b+r+1)^2 \beta ^2} \\
+ 0 & \frac{-\left(p^2-1\right) b^2+\left((\epsilon +2) p^2+(\beta  \epsilon -\text{$\beta $r}) p-r-2\right) b+r-p (r+1) \beta  \epsilon -p^2 (\epsilon +1)+p \text{$\beta $r} (\epsilon +1)+1}{b-r-1} \\
+\end{array}
+\right)
+\end{equation}
+\begin{equation}
+\tau=\frac{p \left(\beta  \left(b^2-b (\text{$\beta $r}+3 r+2)+\text{$\beta $r} \epsilon +\text{$\beta $r}+3 r+1\right)+4 (b-1) \text{$\beta $r}+\beta ^2 \epsilon  (b-r-1)\right)+\beta  \left(b^2-b (-2 \text{$\beta $r}+r+2)-2 \text{$\beta $r}-4 \text{$\beta $r} r+r+1\right)-(b-1) p^2 (b (\beta -1)-\beta  (\epsilon +1)+1)+\beta ^2 r (-b+r+1)+3 \text{$\beta $r}^2}{\beta  (b-r-1)}
+\end{equation}
+\begin{equation}
+\Delta=-\frac{\left(\text{$\beta $r} (2 (b-1) \beta +3 \text{$\beta $r})+(b-1)^2 p^2+(b-1) p (\beta  (b-3 r-1)+4 \text{$\beta $r})+\beta  r (-b \beta +\beta -4 \text{$\beta $r})+\beta ^2 r^2\right) \left(b^2 \left(p^2-1\right)+b \left(p^2 (-(\epsilon +2))+p (\text{$\beta $r}-\beta  \epsilon )+r+2\right)+p^2 (\epsilon +1)-\text{$\beta $r} p (\epsilon +1)+\beta  p (r+1) \epsilon -r-1\right)}{\beta  (-b+r+1)^2}
+\end{equation}
+
+
+
+
+
+
+
+%\begin{equation*}
+%\dfrac{\partial \mathcal{F}_1}{\partial x_1}\Biggr|_{\textbf{x}=\textbf{x*}}=\Bigr|(1-x_1)\lbrace \beta[x_1(1-b+r)-r]+p[x_2(1-b+\epsilon)-\epsilon]\rbrace-x_1\lbrace \beta[x_1(1-b+r)-r]+p[x_2(1-b+\epsilon)-\epsilon]\rbrace+
+%\end{equation*}
+%\begin{equation*}
+%+x_1(1-x_1)\beta(1-b+r)\Bigr|_{\textbf{x}=\textbf{x*}}=(1-2x_1^*)\lbrace \beta[x_1^*(1-b+r)-r]+p[x_2^*(1-b+\epsilon)-\epsilon]\rbrace+x_1^*(1-x_1^*)\beta(1-b+r)
+%\end{equation*}\\
+%\begin{equation*}
+%\dfrac{\partial \mathcal{F}_1}{\partial x_2}\Biggr|_{\textbf{x}=\textbf{x*}}=x_1^*(1-x_1^*)p(1-b+\epsilon)
+%\end{equation*}\\
+%\begin{equation*}
+%\dfrac{\partial \mathcal{F}_2}{\partial x_1}\Biggr|_{\textbf{x}=\textbf{x*}}=x_2^*(1-x_2^*)\beta p(1-b+\epsilon)
+%\end{equation*}
+%\begin{equation*}
+%\dfrac{\partial \mathcal{F}_2}{\partial x_2}\Biggr|_{\textbf{x}=\textbf{x*}}=\Bigr|(1-x_2)\lbrace [x_2(1-b+r)-r]+\beta p[x_1(1-b+\epsilon)-\epsilon]\rbrace-x_2\lbrace [x_2(1-b+r)-r]+\beta p[x_1(1-b+\epsilon)-\epsilon]\rbrace+
+%\end{equation*}
+%\begin{equation*}
+%+x_2(1-x_2)(1-b+r)\Bigr|_{\textbf{x}=\textbf{x*}}=(1-2x_2^*)\lbrace [x_2^*(1-b+r)-r]+\beta p[x_1^*(1-b+\epsilon)-\epsilon]\rbrace+x_2^*(1-x_2^*)(1-b+r)
+%\end{equation*}
+
+
+
+
+\end{document}
